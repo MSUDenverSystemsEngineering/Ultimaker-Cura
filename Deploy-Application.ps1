@@ -22,13 +22,13 @@
 .PARAMETER DisableLogging
 	Disables logging to file for the script. Default is: $false.
 .EXAMPLE
-	powershell.exe -Command "& { & '.\Deploy-Application.ps1' -DeployMode 'Silent'; Exit $LastExitCode }"
+    powershell.exe -Command "& { & '.\Deploy-Application.ps1' -DeployMode 'Silent'; Exit $LastExitCode }"
 .EXAMPLE
-	powershell.exe -Command "& { & '.\Deploy-Application.ps1' -AllowRebootPassThru; Exit $LastExitCode }"
+    powershell.exe -Command "& { & '.\Deploy-Application.ps1' -AllowRebootPassThru; Exit $LastExitCode }"
 .EXAMPLE
-	powershell.exe -Command "& { & '.\Deploy-Application.ps1' -DeploymentType 'Uninstall'; Exit $LastExitCode }"
+    powershell.exe -Command "& { & '.\Deploy-Application.ps1' -DeploymentType 'Uninstall'; Exit $LastExitCode }"
 .EXAMPLE
-	Deploy-Application.exe -DeploymentType "Install" -DeployMode "Silent"
+    Deploy-Application.exe -DeploymentType "Install" -DeployMode "Silent"
 .NOTES
 	Toolkit Exit Code Ranges:
 	60000 - 68999: Reserved for built-in exit codes in Deploy-Application.ps1, Deploy-Application.exe, and AppDeployToolkitMain.ps1
@@ -68,7 +68,7 @@ Try {
 	[string]$appVendor = 'Ultimaker'
 	[string]$appName = 'Cura'
 	[string]$appVersion = '4.12.0'
-	[string]$appArch = 'x64'
+	[string]$appArch = ''
 	[string]$appLang = 'EN'
 	[string]$appRevision = '01'
 	[string]$appScriptVersion = '1.0.0'
@@ -127,9 +127,6 @@ Try {
 		Show-InstallationProgress
 
 		## <Perform Pre-Installation tasks here>
-		##Execute-Process -Path "$dirSupportFiles\vcredist_x64.exe" -Parameters "/install /silent /norestart" -WindowStyle "Hidden" -PassThru
-
-		##Execute-Process -Path "$dirSupportFiles\arduino\dpinst64.exe" -Parameters "/sw" -WindowStyle "Hidden" -PassThru
 
 
 		##*===============================================
@@ -189,6 +186,8 @@ Try {
 		# <Perform Uninstallation tasks here>
 		Execute-Process -Path "$envProgramFiles\Ultimaker_Cura-4.12.0-amd64.exe \Uninstall.exe" -Parameters "/S" -WindowStyle "Hidden" -PassThru
 
+
+
 		##*===============================================
 		##* POST-UNINSTALLATION
 		##*===============================================
@@ -230,7 +229,7 @@ Try {
 		## <Perform Post-Repair tasks here>
 
 
-	}
+    }
 	##*===============================================
 	##* END SCRIPT BODY
 	##*===============================================
@@ -249,8 +248,8 @@ Catch {
 # SIG # Begin signature block
 # MIIU9wYJKoZIhvcNAQcCoIIU6DCCFOQCAQExCzAJBgUrDgMCGgUAMGkGCisGAQQB
 # gjcCAQSgWzBZMDQGCisGAQQBgjcCAR4wJgIDAQAABBAfzDtgWUsITrck0sYpfvNR
-# AgEAAgEAAgEAAgEAAgEAMCEwCQYFKw4DAhoFAAQUWHP9gd2E7fXgHtyL/MpshqDh
-# DDygghHXMIIFbzCCBFegAwIBAgIQSPyTtGBVlI02p8mKidaUFjANBgkqhkiG9w0B
+# AgEAAgEAAgEAAgEAAgEAMCEwCQYFKw4DAhoFAAQUGIwxvZe1QCF0ZpifHsxhM3a9
+# 6eqgghHXMIIFbzCCBFegAwIBAgIQSPyTtGBVlI02p8mKidaUFjANBgkqhkiG9w0B
 # AQwFADB7MQswCQYDVQQGEwJHQjEbMBkGA1UECAwSR3JlYXRlciBNYW5jaGVzdGVy
 # MRAwDgYDVQQHDAdTYWxmb3JkMRowGAYDVQQKDBFDb21vZG8gQ0EgTGltaXRlZDEh
 # MB8GA1UEAwwYQUFBIENlcnRpZmljYXRlIFNlcnZpY2VzMB4XDTIxMDUyNTAwMDAw
@@ -350,13 +349,13 @@ Catch {
 # ZSBTaWduaW5nIENBIFIzNgIRAKVN33D73PFMVIK48rFyyjEwCQYFKw4DAhoFAKB4
 # MBgGCisGAQQBgjcCAQwxCjAIoAKAAKECgAAwGQYJKoZIhvcNAQkDMQwGCisGAQQB
 # gjcCAQQwHAYKKwYBBAGCNwIBCzEOMAwGCisGAQQBgjcCARUwIwYJKoZIhvcNAQkE
-# MRYEFP+9ZWA1KJUSkFdn1/aCBwJtfhtoMA0GCSqGSIb3DQEBAQUABIIBgDGmtpTX
-# 8GxTxWyZzQi2K/Jj9BZZeAuHODJZBkTDVDMieNQfNqX5e24rAdIevL3Rxu/6Km27
-# VexmFEId4qROg+TrV0Dkye9BuO/g4Zu9M7ScTDYMUqqJ6WixiheADgf0XS53EsPL
-# 3DGhGlAeF1+gSLM0c9EA9zLrv54JK9xFPOElcpK8vR5csn2TWastoNhh87lR1I0k
-# FIJMEWsNd8JmZMmp1DZ1yB6RwpKWqtP+ejKxp+va7jB9Y2urGvzXHvLOPAhBlHy2
-# OkMJiQRCbuyFw2ADBqzn7p6I5BqgnTVZkzcM7fBWeVVTLlfmDHn6tqkbFpbq/1Ve
-# 6qCmJ2ngJbRQ0uy/YiyfBmvmDy1sojgxLhyVcH2+vP3RM+MZi42z2rBY+ATtUW8g
-# /Oc9hpUyCcL3A7rznh8YDIqmOZW4YHF5QO2SMcWUb/co8MWp7Gz7st2+jDMmEdNG
-# chX2r+IVpdBgkQKzGYyqJRWo0nT16G7/Fnc3I++ATfTFO8+i+QaG+TILOA==
+# MRYEFPW+QdsEJF/tbjigwz3WpxY5AOe1MA0GCSqGSIb3DQEBAQUABIIBgKbXuoJ4
+# k+26cdtV2lwEwV4+8DdzRzDulM9mODvqLCNjkpOiSgly6SWxYbwXkEGpgntn3Vxc
+# c2qD4yBaH4XOXG/nixWNQ60fE5BrZHrfxtLUns3kgaTKXgun2gUSNtdXp+E7Kubi
+# luCQELv3Zcqs4COmjQ2cN9Ncly4LiuJDV3laedJV7LpUBYH1pRzck+xVqNeO1dx6
+# cuLvUzRh2EC1iwVL8QYdD3Cu4sAv+nq2C6jKQdW+VWmB/vDt/mTIgeahRqRgSyI3
+# M2Tjjv+gayH4NOY54R4q9TXzxIegG7B74aw42DW5sbjY09S/HJEIG0oXKOMvtq/Y
+# D/F3pevtYGNFO5tw2w39lC71MKoPjJg8RrAMiLipoMRNgxRILEeZP6kRV3xCGk9U
+# kFUBZRE/h4GrHMjdJdNJaVYEzklqoNZPjXvo267rP8PtQRdQYz53pP37F7ElAHJg
+# 7L1emAz3aGy0GZ6K31vhXbkC8uY+MJKSylvKUDrEzA57KZ9hk/av7JFzqw==
 # SIG # End signature block
