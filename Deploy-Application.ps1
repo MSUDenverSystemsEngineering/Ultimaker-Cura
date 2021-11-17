@@ -184,7 +184,7 @@ Try {
 		}
 
 		# <Perform Uninstallation tasks here>
-		Execute-Process -Path "$envProgramFiles\Ultimaker_Cura-4.12.0-amd64.exe \Uninstall.exe" -Parameters "/S" -WindowStyle "Hidden" -PassThru
+		Execute-Process -Path "$envProgramFiles\Ultimaker Cura 4.12.0\Uninstall.exe" -Parameters "/S" -WindowStyle "Hidden" -PassThru
 
 
 
@@ -194,6 +194,8 @@ Try {
 		[string]$installPhase = 'Post-Uninstallation'
 
 		## <Perform Post-Uninstallation tasks here>
+
+
 
 
 	}
@@ -248,8 +250,8 @@ Catch {
 # SIG # Begin signature block
 # MIIU9wYJKoZIhvcNAQcCoIIU6DCCFOQCAQExCzAJBgUrDgMCGgUAMGkGCisGAQQB
 # gjcCAQSgWzBZMDQGCisGAQQBgjcCAR4wJgIDAQAABBAfzDtgWUsITrck0sYpfvNR
-# AgEAAgEAAgEAAgEAAgEAMCEwCQYFKw4DAhoFAAQUGIwxvZe1QCF0ZpifHsxhM3a9
-# 6eqgghHXMIIFbzCCBFegAwIBAgIQSPyTtGBVlI02p8mKidaUFjANBgkqhkiG9w0B
+# AgEAAgEAAgEAAgEAAgEAMCEwCQYFKw4DAhoFAAQUi93fVYT0C63lU3xH7sv1L8/P
+# 9ZigghHXMIIFbzCCBFegAwIBAgIQSPyTtGBVlI02p8mKidaUFjANBgkqhkiG9w0B
 # AQwFADB7MQswCQYDVQQGEwJHQjEbMBkGA1UECAwSR3JlYXRlciBNYW5jaGVzdGVy
 # MRAwDgYDVQQHDAdTYWxmb3JkMRowGAYDVQQKDBFDb21vZG8gQ0EgTGltaXRlZDEh
 # MB8GA1UEAwwYQUFBIENlcnRpZmljYXRlIFNlcnZpY2VzMB4XDTIxMDUyNTAwMDAw
@@ -349,13 +351,13 @@ Catch {
 # ZSBTaWduaW5nIENBIFIzNgIRAKVN33D73PFMVIK48rFyyjEwCQYFKw4DAhoFAKB4
 # MBgGCisGAQQBgjcCAQwxCjAIoAKAAKECgAAwGQYJKoZIhvcNAQkDMQwGCisGAQQB
 # gjcCAQQwHAYKKwYBBAGCNwIBCzEOMAwGCisGAQQBgjcCARUwIwYJKoZIhvcNAQkE
-# MRYEFPW+QdsEJF/tbjigwz3WpxY5AOe1MA0GCSqGSIb3DQEBAQUABIIBgKbXuoJ4
-# k+26cdtV2lwEwV4+8DdzRzDulM9mODvqLCNjkpOiSgly6SWxYbwXkEGpgntn3Vxc
-# c2qD4yBaH4XOXG/nixWNQ60fE5BrZHrfxtLUns3kgaTKXgun2gUSNtdXp+E7Kubi
-# luCQELv3Zcqs4COmjQ2cN9Ncly4LiuJDV3laedJV7LpUBYH1pRzck+xVqNeO1dx6
-# cuLvUzRh2EC1iwVL8QYdD3Cu4sAv+nq2C6jKQdW+VWmB/vDt/mTIgeahRqRgSyI3
-# M2Tjjv+gayH4NOY54R4q9TXzxIegG7B74aw42DW5sbjY09S/HJEIG0oXKOMvtq/Y
-# D/F3pevtYGNFO5tw2w39lC71MKoPjJg8RrAMiLipoMRNgxRILEeZP6kRV3xCGk9U
-# kFUBZRE/h4GrHMjdJdNJaVYEzklqoNZPjXvo267rP8PtQRdQYz53pP37F7ElAHJg
-# 7L1emAz3aGy0GZ6K31vhXbkC8uY+MJKSylvKUDrEzA57KZ9hk/av7JFzqw==
+# MRYEFB+Zm5O/6mxdhcaAajeMOhzbKEFsMA0GCSqGSIb3DQEBAQUABIIBgE3xdvpa
+# jKpuiPUg1gLI6Q+RzZ+X9P+jQH/brDhDlREHnW0HY6KTvzHfZBE1u6BF/8+q+T0R
+# TwfaPX39+x0dc8YHAa2VVV4bxBJsrMCcOi7e+0o3l4d9W75lyL5qrIj0DHA6/1Fq
+# oYONtS9bOZxUW3lLN+k4eB5pIMQKzPPSyuNVKuzsULQNGeL0licIrEx+0lTah6PP
+# izHjeQ8CZObTbJBKBm8pTjclI4a0j+d/gd9OTrWiYepMkMAVkTep6Mp6IpQoHCl5
+# 2oVjgdf6tIfiI0Y768uhn7BpiQ1tMQljrz++OKyyjJbTzusbjUnj5N/iI6sUZRr5
+# fQr7fpWdLe+FQsfFbiNcooh2VeQUVEmAOVmIU8Do3Zanc8Xpm0i3wPhMuVWuCRQB
+# 7XW8wpGiZ1lNiKwgA39JiVIgH2u4BwxeLZlf0JM0MVFHSXQAe0wHpz89ddemCDSp
+# mqC/FlOojndVsiplIKdEDhgXV7wFqI54Bkw49TLshgZgDcQCAnU2UTsl/A==
 # SIG # End signature block
