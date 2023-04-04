@@ -67,13 +67,13 @@ Try {
 	## Variables: Application
 	[string]$appVendor = 'Ultimaker'
 	[string]$appName = 'Cura'
-	[string]$appVersion = '5.1.0'
+	[string]$appVersion = '5.3.0'
 	[string]$appArch = ''
 	[string]$appLang = 'EN'
 	[string]$appRevision = '01'
 	[string]$appScriptVersion = '1.0.0'
-	[string]$appScriptDate = '07/26/2022'
-	[string]$appScriptAuthor = 'Ryan McKenna'
+	[string]$appScriptDate = '04/04/2023'
+	[string]$appScriptAuthor = 'Will Jarvill'
 	##*===============================================
 	## Variables: Install Titles (Only set here to override defaults set by the toolkit)
 	[string]$installName = ''
@@ -128,6 +128,10 @@ Try {
 
 		## <Perform Pre-Installation tasks here>
 		##Uninstall previous versions
+		If (Test-Path -Path "$envProgramFiles\Ultimaker Cura 5.1.0\Cura.exe")
+		{
+			Execute-Process -Path "$envProgramFiles\Ultimaker Cura 5.1.0\Uninstall.exe" -Parameters "/S" -WindowStyle "Hidden" -PassThru
+		}
 		If (Test-Path -Path "$envProgramFiles\Ultimaker Cura 4.12.0\Cura.exe")
 		{
 			Execute-Process -Path "$envProgramFiles\Ultimaker Cura 4.12.0\Uninstall.exe" -Parameters "/S" -WindowStyle "Hidden" -PassThru
@@ -150,7 +154,7 @@ Try {
 		}
 
 		## <Perform Installation tasks here>
-		$exitCode = Execute-Process -Path "Ultimaker-Cura-5.1.0-win64.exe" -Parameters "/S" -WindowStyle "Hidden" -PassThru
+		$exitCode = Execute-Process -Path "Ultimaker-Cura-5.3.0-win64.exe" -Parameters "/S" -WindowStyle "Hidden" -PassThru
 		If (($exitCode.ExitCode -ne "0") -and ($mainExitCode -ne "3010")) { $mainExitCode = $exitCode.ExitCode }
 
 
@@ -192,7 +196,7 @@ Try {
 		}
 
 		# <Perform Uninstallation tasks here>
-		Execute-Process -Path "$envProgramFiles\Ultimaker Cura 5.1.0\uninstall.exe" -Parameters "/S" -WindowStyle "Hidden" -PassThru
+		Execute-Process -Path "$envProgramFiles\Ultimaker Cura 5.3.0\uninstall.exe" -Parameters "/S" -WindowStyle "Hidden" -PassThru
 
 
 
@@ -258,8 +262,8 @@ Catch {
 # SIG # Begin signature block
 # MIImVgYJKoZIhvcNAQcCoIImRzCCJkMCAQExDzANBglghkgBZQMEAgEFADB5Bgor
 # BgEEAYI3AgEEoGswaTA0BgorBgEEAYI3AgEeMCYCAwEAAAQQH8w7YFlLCE63JNLG
-# KX7zUQIBAAIBAAIBAAIBAAIBADAxMA0GCWCGSAFlAwQCAQUABCAcXw7tXjgYcgUh
-# WOaQLGDtFt/9o8/PmYrFy4FQGrxH/aCCH8EwggVvMIIEV6ADAgECAhBI/JO0YFWU
+# KX7zUQIBAAIBAAIBAAIBAAIBADAxMA0GCWCGSAFlAwQCAQUABCAbdlIP8vO9Xt0z
+# GKbuY+VGlyXwxFhndygCGl/OeCh+O6CCH8EwggVvMIIEV6ADAgECAhBI/JO0YFWU
 # jTanyYqJ1pQWMA0GCSqGSIb3DQEBDAUAMHsxCzAJBgNVBAYTAkdCMRswGQYDVQQI
 # DBJHcmVhdGVyIE1hbmNoZXN0ZXIxEDAOBgNVBAcMB1NhbGZvcmQxGjAYBgNVBAoM
 # EUNvbW9kbyBDQSBMaW1pdGVkMSEwHwYDVQQDDBhBQUEgQ2VydGlmaWNhdGUgU2Vy
@@ -433,32 +437,32 @@ Catch {
 # ZDErMCkGA1UEAxMiU2VjdGlnbyBQdWJsaWMgQ29kZSBTaWduaW5nIENBIFIzNgIR
 # AKVN33D73PFMVIK48rFyyjEwDQYJYIZIAWUDBAIBBQCggYQwGAYKKwYBBAGCNwIB
 # DDEKMAigAoAAoQKAADAZBgkqhkiG9w0BCQMxDAYKKwYBBAGCNwIBBDAcBgorBgEE
-# AYI3AgELMQ4wDAYKKwYBBAGCNwIBFTAvBgkqhkiG9w0BCQQxIgQgNPkosezkTuAC
-# BK57kNSeVDN4iEcjulxmOZfVN2c8qN4wDQYJKoZIhvcNAQEBBQAEggGAXz8Z5C/G
-# ghJk6ttUFVBQF7886WHQ3MUuuhDVFdKS0lqaph0xqW0b72pCPo9RQzO8TxaArBRP
-# ZPZ5q/rGKO6JBdzzLPmRm3Bnz1HBAe5lbCogS1tbkZhD3l47wqpefHY0I4lweApi
-# wfkv2ygrPMaDrxFZZw2TYXkrk2exsNxKLD5b1Gaii3l1PXyldZ7ZGS/p2BW+Pd9j
-# Ze9nwbgSt4r0i6mzAslc7yUPxVjRlPHCXepRjO2IfaAvPFaLTdII3+uh8LFLiH7X
-# 3pDg2TeMMpUexj7MVObtPaY+iIURchf9GB66o1Y3P9c9vwrnHFdRpfRMnE1/XWU7
-# EG8EAe7VHFVGA98qBKXA/9wL88lBQpe+WKzcW0430qHHQyl/VBwAkXrU761k6C3h
-# BgtTdI71cf7lZcjBZONjGWTcZ038a4Ea+1oq8BBevnR3fKyRFFC7BTkAoeUfn7U5
-# j+ZjeWNFlRzr4i2ZfknpfGsmNhzvVZMGl4RI7zteACJO5Od/r6ZhpbwGoYIDTDCC
+# AYI3AgELMQ4wDAYKKwYBBAGCNwIBFTAvBgkqhkiG9w0BCQQxIgQgPt63RGmhCJDU
+# IJW2bsr0mJYF+ZKsURS1PsitmrTpHlYwDQYJKoZIhvcNAQEBBQAEggGAY+jkzdbp
+# w1FYibs4oWvgFqCUpkqN9oxRvyfVsHRnHsdmuEtrS2wbI/gGmGJ9u/ZqxXgFZeyc
+# 8WG+9dPzdf3jBQHxaEjQbG+2ZPsUnp3dwDlRd/uv3A78yrhhok6zK/MsSwLGN0gB
+# Bg0Tklrhw9OhftN1/oHXlooSSYoYm7VM7fd2x0xXd72/U91yZ7nC+KeE5nmwjnxE
+# hLN/V27JKBJGPsBsoC3CE8DTGYUcKDF9rTkuiZD4sh1CRl7ZlFd6iURS+lLMDgAv
+# 92j+kDPoW/vwm+MS2F/IVPFFUiE7qtpXb3Bwsv5DUKwI7Tt2Niv6XFglqDeHXNuL
+# BVASDaJvgOp+i7JC8sFZ4H8h4rowBqhKcffpMAwoQbeG+vBdMSHMJfnpgW9f7PSl
+# 9x8m3E6deLXMtYJbRP2HH4MpNs2wLQmPrsL7ZkVr3e8ujyUp8vhYuR6y5prKfSgs
+# JJsDZR4A+6SQ+4QJWW2jbWE645mZTxhT+KCNN6UtBb7QyOxGohDJHnMGoYIDTDCC
 # A0gGCSqGSIb3DQEJBjGCAzkwggM1AgEBMIGSMH0xCzAJBgNVBAYTAkdCMRswGQYD
 # VQQIExJHcmVhdGVyIE1hbmNoZXN0ZXIxEDAOBgNVBAcTB1NhbGZvcmQxGDAWBgNV
 # BAoTD1NlY3RpZ28gTGltaXRlZDElMCMGA1UEAxMcU2VjdGlnbyBSU0EgVGltZSBT
 # dGFtcGluZyBDQQIRAJA5f5rSSjoT8r2RXwg4qUMwDQYJYIZIAWUDBAICBQCgeTAY
-# BgkqhkiG9w0BCQMxCwYJKoZIhvcNAQcBMBwGCSqGSIb3DQEJBTEPFw0yMjA3MjYy
-# MjE3NDlaMD8GCSqGSIb3DQEJBDEyBDD8+24mUteSozSU00s6p7VgX+dbsYaIgoio
-# OTiFYUcpa05ekrwqv88hYIDGMRu81pYwDQYJKoZIhvcNAQEBBQAEggIAhBDxB4Zh
-# 47Fv72udQBC9pHc6P2MLhDFZLvq1G7/+i7M2Oi1eAxw+TSwMcYn1LDSz4KGZosx9
-# CDc0C8QwedeF9EUASreX95NEt7tcuM4yJHCIwCeeADdeqaHaY2Hec7azwqU+9DCY
-# CxvcmgxQDtsd/ZG3J77WQEAflKRLgeQaHclohFKP+rTjMZhVBvgfJZr+wEet5Psn
-# 5tdKgJ15dCHvicwI55fxCfghPcASfokIGJ9R4VanNuA+ytD6pAyZb9zhh8Vq7cbG
-# PFyBWEAyqJII8xWEz6rgepR8wF91DX6u76PheOqiPDWMnYGZaYEJYyux0yc79Fdq
-# zqcL/6U3ICL9JcrAH3DoaTheisEDpDmkyWOy1OSsd9pL8L9JfQrYDjNk7hcFUiel
-# 2QifuQgW2+Hdkoj4ErzzLcOa7wuw5MQAP/0vUP5sEJgdrBjjKpNp6am9Wlu46cDa
-# lSe1NAmd07uvc2nbaVCKraa1PrPIiJlYiLUY+eKk6fx8Dq6E8k7lG2bcY37VaaUh
-# Mpt/Pgj3N2eGr8zMO8Tf2/1RPi1R5G1CY/Ku/+KgtpdsXHVJ7YA46mP+w19XtfJH
-# p8nLQRst/Mwbd46nJqHoXw+JnpTZgnrpKDLvjhUSB85S5YQjKsO8hcOoMz6kGPEx
-# yptx6c4hnZyr3Sj3nwEPjidP0bV9mMDGJc8=
+# BgkqhkiG9w0BCQMxCwYJKoZIhvcNAQcBMBwGCSqGSIb3DQEJBTEPFw0yMzA0MDQx
+# NTU4MjZaMD8GCSqGSIb3DQEJBDEyBDCgrQ3vc0Ep4lh4M20FOEVNqZnlGo81Qtiz
+# 7Ft0X6EQf1c9feJoDmR4BEGsaxg4AHYwDQYJKoZIhvcNAQEBBQAEggIASE43B1AX
+# wKi2Vs24zZ6ESkQKF2Q8kCnL2xtGDxPW3+O/UWo6Oo5QNrTK4erXYXEBaKoGuFR8
+# YmI8BsOGGPGBhMpKmtOEBJuJAXdxlUu+n3UaEdpy1iswmMGOVnEKlhzu3ZlLRtUd
+# YHTfu7odkshY19fcDbuj9ftL3i9+8TYX2vrfMKxFKjKL9oq6pqidUMKVhRPvMIyK
+# UrD6Q8f51dTXX1RLubSHjWB+vOPFI6VjYn19PC2YwQxFi8bFtr7C/mP21Ns6fcbS
+# v4PpK1ufCljPxUUDP6S/ypTlo32AGJTFjx7HY4YC71hqnGrU/Z4VcEftQKP+psSg
+# 2m/o8gD+DILHkJgZbeNYYZbnOo/ZhFyy7F10y/z702WIE+i//k1SXgl34uZ2h6BS
+# ir780VcCBeE1nJo5X7pjafALlBzhTPoVWOAR+1vwjkdQUNSJectWiNxkMwTYZynX
+# htSxVTtcAv057tpBm/w+F/d2vAoZUiGvmM3ZTeIS2H4JLie9BesMpGAIafBc2GKp
+# B/F/0hwAEuErIZaMVmXaKRb/RgSSTFjT/UnxIJHMz4lNtw/2fio9PQItmaFPTVLv
+# dHZloalgYV/Pc1pyukaticPGCUQ4118CCTdLNP8hu1EdeUBZKkbw3J8efkTsF1bz
+# T8c4oWptjugn57hD/BQhvbGcSKUIjyMXiDI=
 # SIG # End signature block
